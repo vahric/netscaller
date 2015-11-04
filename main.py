@@ -15,9 +15,7 @@ for i in netscaller_sunucular:
     print i
 """
 
-a = netscaller_create_server("10.111.34.220",netscaller_token,"vahric01","10.7.7.7")
-print a.text
-
+netscaller_create_server("10.111.34.220",netscaller_token,"vahric02","10.7.7.7")
 
 
 

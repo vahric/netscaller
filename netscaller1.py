@@ -68,11 +68,12 @@ def netscaller_create_server(ns_ip, netscaller_token_def, serveradi, serveripadr
                                 "IPAddress": serveripadresi
                             }
                           }
-    print create_server_data
+
     create_server_data_json = json.dumps(create_server_data)
-    print create_server_data_json
+
 
     istek = requests.post(ns_secure + ns_ip + ns_server_all, verify=False,
                           headers=headers_data, data=create_server_data_json)
-    print istek.url
+
     return istek
+
