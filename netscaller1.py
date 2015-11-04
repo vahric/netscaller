@@ -58,6 +58,7 @@ def netscaller_create_server(ns_ip, netscaller_token_def, serveradi, serveripadr
 
     # Kullanici adi ve sifre vermeden Netscaller a login olmak icin
     headers_data = {"Cookie": "NITRO_AUTH_TOKEN=" + netscaller_token_def,
+                    #Buraya dikkat eger Content Type olarak json application belirtmezseniz Invalid POST Rewuest Diyor
                     "Content-Type":"application/json"}
 
     # Sunucu Yaratmak Icin Payload Olusturuyoruz
