@@ -37,18 +37,42 @@ def netscaller_get_servers(ns_ip, netscaller_token_def):
     istek = requests.get(ns_secure + ns_ip + ns_server_all, verify=False,
                          headers=headers_data)
 
-    #return istek
+    # return istek
 
     # Simdi tum server tanimlarini cekelim
     # HTTP request yapip bunu json() ile pythin dictionary e cevirelim
     get_list_of_servers = istek.json()
 
-    #Birden fazla deger donebileceginden bir liste yapalim
+    # Birden fazla deger donebileceginden bir liste yapalim
     liste = []
     # Server key i bize gerekli bilgleri verecek , server key in value su array
     for sunucular in get_list_of_servers['server']:
         for sunucubilgileri in sunucular:
             if sunucubilgileri == "name":
                 liste.append(sunucular[sunucubilgileri])
-                #return sunucular[sunucubilgileri]
+                # return sunucular[sunucubilgileri]
     return liste
+
+
+def netscaller_create_server(ns_ip, netscaller_token_def, serveradi, serveripadresi):
+
+    # Kullanici adi ve sifre vermeden Netscaller a login olmak icin
+    headers_data = {"Cookie": "NITRO_AUTH_TOKEN=" + netscaller_token_def,
+                    "Content-Type":"application/json"}
+
+    # Sunucu Yaratmak Icin Payload Olusturuyoruz
+    create_server_data = {
+                            "server":
+                            {
+                                "name": serveradi,
+                                "IPAddress": serveripadresi
+                            }
+                          }
+    print create_server_data
+    create_server_data_json = json.dumps(create_server_data)
+    print create_server_data_json
+
+    istek = requests.post(ns_secure + ns_ip + ns_server_all, verify=False,
+                          headers=headers_data, data=create_server_data_json)
+    print istek.url
+    return istek

@@ -18,4 +18,10 @@ ns_login_path = "/nitro/v1/config/login"
 #LB_Servers login path
 ns_server_all = "/nitro/v1/config/server"
 
+#Object Create Url
+object_create_url = "/nitro/v1/config/"
+
+#Content Types
+
+
 
